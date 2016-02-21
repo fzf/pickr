@@ -2,7 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="styles-custom.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/utility.css">
+    <link rel="stylesheet" href="css/styles-custom.css">
 
     <script src="angular.min.js"></script>
     <script src="angular-swing.js"></script>
@@ -10,9 +13,15 @@
     <script src="app.js"></script>
   </head>
   <body ng-app="pickrApp">
-    <div id="viewport" ng-controller="cardsController as card">
-      <ul class="stack" swing-stack swing-options="options">
-        <li
+    <div id="viewport" class="container" ng-controller="cardsController as card">
+      <div class="row absolute top-0 padding-top full-width">
+        <div class="col-xs-12 text-center">
+          LOGO
+          <!-- logo goes here -->
+        </div>
+      </div>
+      <ul class="padding-0 row full-height" swing-stack swing-options="options">
+        <li class="col-xs-12 full-height padding-top-60"
           swing-card
           swing-on-throwout="throwout(eventName, eventObject)"
           swing-on-throwoutleft="throwoutleft(eventName, eventObject)"
@@ -22,12 +31,27 @@
           swing-on-dragmove="dragmove(eventName, eventObject)"
           swing-on-dragend="dragend(eventName, eventObject)"
           ng-repeat="card in cards" ng-class="card.name">
-          <img src="{{card.poster}}">
+          <!-- <img class="img-responsive" src="{{card.poster}}"> -->
+          <img class="width-85" src="images/sample.jpg">
+          <h2>{{card.title}}</h2>
         </li>
       </ul>
-
-      <img src="red-x.png">
-      <img src="blue-check.png">
+      <div class="row absolute bottom-0 padding-bottom full-width">
+        <div class="width-85 margin-auto">
+          <div class="col-xs-6">
+            <div>
+              <p class="uppercase">did not see</p>
+              <img class="img-responsive icon" src="images/reject-icon.png">
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="text-right">
+              <p class="uppercase">watched</p>
+              <img class="img-responsive icon inline-block" src="images/approve-icon.png">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
